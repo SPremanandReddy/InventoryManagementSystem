@@ -1,0 +1,82 @@
+body{
+    background-image: url("../images/stockManagementPIC1.jpg");
+    background-repeat: no-repeat;
+    height:100vh;
+    width:100vw;
+    background-size:cover;
+    
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    color:yellow;
+    font-weight: bold;
+}
+.loginHeader h1{
+    font-size:100px;
+    color:#f68582;
+    padding:0px;
+    margin:0px;
+    text-align: center;
+}
+
+.loginHeader p{
+    color:#ffdae3;
+    font-size:50px;
+    
+    margin:0px;
+    text-transform: uppercase;
+}
+form > div{
+    margin:10px;
+}
+div.loginHeader p:after{
+    content:'';
+    display: block;
+    height:5px;
+    background-color:#f68582;
+    width:50%;
+    margin:0 auto;
+}
+
+div.loginBody form{
+    margin:3px auto;
+    width:500px;
+    background:rgba(0,0,0,.5);
+    padding:50px;
+    border-radius:10px;
+    border: 2px solid white;
+}
+
+.loginInputsContainer{
+    margin-top:20px;
+}
+
+.loginInputsContainer label{
+    display:block;
+    font-size:20px;
+    font-weight: bold;
+    color:#fff;
+}
+.loginInputsContainer input{
+    height:30px;
+  width:100%;
+    border: 2px solid #d40339;
+    font-size:20px;
+    padding:5px;
+    text-align:center;
+    font-style:italic;
+}
+.loginButtonContainer{
+    text-align: center;
+}
+div.loginButtonContainer button{
+    font-size: 30px;
+    padding:10px 30px;
+    background-color:#f68582;
+    border:none;
+    color:#fff;
+    
+}
