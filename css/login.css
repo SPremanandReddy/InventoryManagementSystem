@@ -74,10 +74,7 @@ body#loginBody {
   background-attachment: fixed;
   background-size: cover;
   font-family: arial;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .container {
@@ -508,4 +505,12 @@ div.dashboard_content_main {
   max-height: 900px;
   height: 100% ;
 
+}
+
+div#errorMessage{
+  background-color: #fff;
+  text-align:center;
+  color:red;
+  font-size:28px;
+  padding:11px;
 }
