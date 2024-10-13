@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['user'])) header('location: dashboard.php');
+    if(isset($_SESSION['user'])) header('location: dashboard.php');
    $error_message = ""; // Correct variable name
    if($_POST){
        include('C:\xampp\htdocs\InventoryManagementSystem\database\connection.php');
@@ -10,7 +10,7 @@
        $password = $_POST['password'];
        
        // Prepare the query with placeholders to prevent SQL injection
-       $query = 'SELECT * FROM USERS WHERE users.email = ? AND users.password = ?';
+       $query = 'SELECT * FROM USERS WHERE users.email = ? AND users.password = ? LIMIT 1';
        $stmt = $connection->prepare($query);
        $stmt->bind_param('ss', $username, $password);
        $stmt->execute();
@@ -20,6 +20,7 @@
        if($result->num_rows > 0){
         $user = $result->fetch_assoc();
         $_SESSION['user']=$user;
+        
         header('Location: dashboard.php');
         exit();
            // Success logic (e.g., redirect or continue to the next page)
