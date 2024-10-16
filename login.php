@@ -4,7 +4,8 @@
     if(isset($_SESSION['user'])) header('location: dashboard.php');
    $error_message = ""; // Correct variable name
    if($_POST){
-       include('C:\xampp\htdocs\InventoryManagementSystem\database\connection.php');
+       include('database\connection.php');
+       
 
        $username = $_POST['username'];
        $password = $_POST['password'];
@@ -39,11 +40,15 @@
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body id="loginBody">
-    <?php if(!empty($error_message)) { ?>
+    <?php
+     if(!empty($error_message)) { 
+        ?>
         <div id="errorMessage" style="color: red; font-weight: bold;">
             <p>Error: <?= $error_message ?></p>
         </div>
-    <?php } ?>
+    <?php
+ } 
+ ?>
     <div class="container">
         <div class="loginHeader">
             <h1>IMS</h1>
