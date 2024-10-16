@@ -4,7 +4,7 @@
     if(isset($_SESSION['user'])) header('location: dashboard.php');
    $error_message = ""; // Correct variable name
    if($_POST){
-       include('C:\xampp\htdocs\InventoryManagementSystem\database\connection.php');
+       include('database\connection.php');
 
        $username = $_POST['username'];
        $password = $_POST['password'];

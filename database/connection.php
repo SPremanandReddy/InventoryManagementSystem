@@ -5,10 +5,10 @@ $password="Thulash9@";
 $database="inventory";
 
 
-
+$connection = new mysqli($servername,$username,$password,$database);
+ 
 try{
-    $connection = new mysqli($servername,$username,$password,$database);
-    if($connection->connect_error){
+       if($connection->connect_error){
         throw new Exception("Connection failed".$connection->connect_error);
     }
 }catch(Exception $error){

@@ -22,7 +22,7 @@ $user=$_SESSION['user'];
             alt="User image."
             id="userImage"
           />
-          <span><?= $user["first_name"].' '.$user["last_name"]?></span>
+          <span><?= $user["first_name"].' '.$user["second_name"]?></span>
         </div>
         <div class="dashboard_sidebar_menus">
           <ul class="dashboard_menu_lists">
