@@ -23,7 +23,7 @@
          <div class="dashboard_content_main">
            <div id="userAddFormContainer">
 
-             <form action="database/user-add.php" method="POST" class="appForm">
+             <form action="database/add.php" method="POST" class="appForm">
                <div class="appFormInputContainer">
                  <label for="first_name">First Name</label>
                  <input type="text" class="appFormInput" id="first_name" name="first_name" />
@@ -41,14 +41,15 @@
                  <input type="password" class="appFormInput" id="password" name="password" />
                </div>
                <!-- <input type="hidden" name="table" value="users"> -->
-               <button type="submit"><i class="fa fa-plus"></i> Add User</button>
+               <button type="submit" class="appBtn"><i class="fa fa-plus"></i> Add User</button>
              </form>
              <?php 
                  if(isset($_SESSION['response'])) {
-                  $response_message = $_SESSION['response'] ['message'];$is_success = $_SESSION['response'] ['success'];
+                  $response_message = $_SESSION['response'] ['message'];
+                  $is_success = $_SESSION['response'] ['success'];
               ?>
               <div class="responseMessage">
-                <p class="<?= $is_success? 'responseMessage_success' : 'responseMessage_error'?>">
+                <p class="responseMessage<?= $is_success ? 'responseMessage_success' : 'responseMessage_error'?>">
                 <?= $response_message ?>
 </p>
 </div>
