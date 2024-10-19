@@ -1,7 +1,13 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) header('location: login.php');
-$user = $_SESSION['user'];
+
+if (!isset($_SESSION['user'])){
+  header('location: login.php');
+  exit();
+}  
+  $user = $_SESSION['user'];
+
+
 ?>
 
 <!DOCTYPE html>
