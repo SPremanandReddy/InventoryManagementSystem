@@ -23,7 +23,7 @@
          <div class="dashboard_content_main">
            <div id="userAddFormContainer">
 
-             <form action="database/user-add.php" method="POST" class="appForm">
+             <form action="database/add.php" method="POST" class="appForm">
                <div class="appFormInputContainer">
                  <label for="first_name">First Name</label>
                  <input type="text" class="appFormInput" id="first_name" name="first_name" />

@@ -1,31 +1,58 @@
 <?php
 // Start the session.
 session_start();
+
+// Retrieve values from session and POST request
 $table_name = $_SESSION['table'];
 $first_name = $_POST['first_name'];
-$last_name = $_POST['second_name'];
+$last_name = $_POST['last_name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$encrypted = password_hash ($password, PASSWORD_DEFAULT);
-// Adding the record.
+
+// Encrypt the password
+$encrypted = password_hash($password, PASSWORD_DEFAULT);
+
+// Include the database connection
+include('connection.php'); // Assumes you have a connection.php file with $conn defined as the connection
+
+// Adding the record using MySQLi
 try {
-$command = "INSERT INTO
-$table_name(first_name, second_name, email, password, created_at, updated_at)
-VALUES
-('".$first_name."' .$last_name."', '".$email." '".$encrypted."', NOW(), NOW())";
-include('connection.php');
-$conn->exec($command);
-$response = [
-'success' => true,
-'message' => $first_name $last_name successfully added to the system. '
-];
-} catch (PDOException $e) {
-echo
-$response = [
-'success => false,
-'message' => $first_name $last_name successfully added to the system. '
-];
+    // Prepare the SQL statement with placeholders
+    $stmt = $connection->prepare("INSERT INTO $table_name (first_name, second_name, email, password, created_at, updated_at)
+                            VALUES (?, ?, ?, ?, NOW(), NOW())");
+    
+    // Bind the parameters to the placeholders
+    $stmt->bind_param("ssss", $first_name, $last_name, $email, $encrypted);
+
+    // Execute the prepared statement
+    if ($stmt->execute()) {
+        // If successful, prepare a success response
+        $response = [
+            'success' => true,
+            'message' => $first_name . ' ' . $last_name . ' successfully added to the system.'
+        ];
+    } else {
+        // If the execution failed, prepare an error response
+        $response = [
+            'success' => false,
+            'message' => 'Error: Unable to add ' . $first_name . ' ' . $last_name . ' to the system.'
+        ];
+    }
+
+    // Close the statement
+    $stmt->close();
+
+} catch (Exception $e) {
+    // Handle any errors that occur
+    $response = [
+        'success' => false,
+        'message' => 'Exception occurred: ' . $e->getMessage()
+    ];
 }
-$_SESSION['response']=$response;
-header('location: ./users-add.php');
+
+// Store the response in session
+$_SESSION['response'] = $response;
+
+// Redirect to users-add.php page
+ header('location: ../users-add.php');
 ?>

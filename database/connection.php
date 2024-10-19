@@ -1,7 +1,7 @@
 <?php
-$servername="localhost";
+$servername="localhost:3307";
 $username="root";
-$password="";
+$password="Thulash9@";
 $database="inventory";
 
 
