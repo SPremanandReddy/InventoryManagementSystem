@@ -60,6 +60,7 @@ if (!isset($_SESSION['user'])){
             alt="User image."
             id="userImage"
           />
+          <span><?= $user["first_name"].' '.$user["second_name"]?></span>
           <span><
           ?= $user["first_name"] . ' ' . $user["_name"] ?></span>
         </div>

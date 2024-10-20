@@ -5,6 +5,7 @@
    $error_message = ""; // Correct variable name
    if($_POST){
        include('database\connection.php');
+       include('database\connection.php');
        
 
        $username = $_POST['username'];
