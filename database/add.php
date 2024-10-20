@@ -9,8 +9,8 @@ $last_name = $_POST['last_name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Encrypt the password
 $encrypted = password_hash($password, PASSWORD_DEFAULT);
+
 
 // Include the database connection
 include('connection.php'); // Assumes you have a connection.php file with $conn defined as the connection
@@ -27,15 +27,22 @@ try {
     // Execute the prepared statement
     if ($stmt->execute()) {
         // If successful, prepare a success response
+
         $response = [
             'success' => true,
             'message' => $first_name . ' ' . $last_name . ' successfully added to the system.'
         ];
     } else {
+
+        $response = [
+            'success' => false,
+            'message' => 'Error adding ' . $first_name . ' ' . $last_name . ' to the system.'
+        ];
         // If the execution failed, prepare an error response
         $response = [
             'success' => false,
             'message' => 'Error: Unable to add ' . $first_name . ' ' . $last_name . ' to the system.'
+
         ];
     }
 
@@ -43,16 +50,16 @@ try {
     $stmt->close();
 
 } catch (Exception $e) {
-    // Handle any errors that occur
     $response = [
         'success' => false,
-        'message' => 'Exception occurred: ' . $e->getMessage()
+        'message' => 'Error: ' . $e->getMessage()
     ];
 }
 
-// Store the response in session
+// Save the response to the session
 $_SESSION['response'] = $response;
 
-// Redirect to users-add.php page
- header('location: ../users-add.php');
+// Redirect to the users-add.php page
+header('Location: ../users-add.php');
+
 ?>
